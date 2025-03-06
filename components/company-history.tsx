@@ -94,13 +94,16 @@ export default function CompanyHistory() {
           {historyItems.map((item, index) => (
             <div
               key={item.year}
-              className={`timeline-item relative mb-16 last:mb-0 md:flex ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
+              className={`timeline-item relative mb-16 last:mb-0 md:flex ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
             >
-              <div className="md:w-1/2 md:pr-12 md:pl-0 pl-12 relative">
-                {/* Timeline dot */}
-                <div className="absolute left-0 md:left-auto md:right-0 top-0 w-8 h-8 rounded-full bg-primary transform translate-x-[-50%] md:translate-x-[50%] flex items-center justify-center">
+              <div className={`md:w-1/2 relative ${index % 2 === 0 ? "md:pr-12" : "pl-12"}`}>
+
+
+                <div
+                  className={`absolute top-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center 
+                        ${index % 2 === 0 ? "left-0 md:right-0 md:left-auto md:translate-x-[50%]" : "left-0 md:left-0 md:right-auto md:translate-x-[-50%]"}`}
+                >
                   <div className="w-4 h-4 rounded-full bg-white"></div>
                 </div>
 

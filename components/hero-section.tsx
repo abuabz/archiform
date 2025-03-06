@@ -35,7 +35,7 @@ export default function HeroSection() {
 
     // Parallax effect on scroll
     gsap.to(".hero-image", {
-      yPercent: 20,
+      yPercent: 10,
       ease: "none",
       scrollTrigger: {
         trigger: section,
@@ -63,7 +63,7 @@ export default function HeroSection() {
       {/* Background Image with Parallax */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/placeholder.svg?height=1080&width=1920"
+          src="./assets/imgmain.png"
           alt="Modern architectural building"
           fill
           className="hero-image object-cover"

@@ -19,20 +19,23 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll)
 
-    // Animate navbar on mount
-    gsap.from(".navbar", {
-      y: -100,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    })
-
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   useEffect(() => {
+    // Re-run animation on page change
+    gsap.fromTo(
+      ".navbar",
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+    )
+
+    // Close mobile menu on route change
+    setIsOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
     if (isOpen) {
-      // Animate mobile menu opening
       gsap.fromTo(".mobile-menu", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 })
     }
   }, [isOpen])
@@ -46,11 +49,13 @@ export default function Navbar() {
 
   return (
     <header
-      className={`navbar fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-md py-2" : "bg-transparent py-4"}`}
+      className={`navbar fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/90 backdrop-blur-md shadow-md py-2" : "bg-transparent py-4"
+      }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="text-2xl font-serif font-bold">
-          Archiform
+          Brand
         </Link>
 
         {/* Desktop Navigation */}
@@ -99,4 +104,3 @@ export default function Navbar() {
     </header>
   )
 }
-
